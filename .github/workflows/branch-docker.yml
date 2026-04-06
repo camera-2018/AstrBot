@@ -1,7 +1,9 @@
 name: Branch Docker Image
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feat-call
 
 jobs:
   build-and-push:
