@@ -1016,6 +1016,10 @@
   content: "\F057E";
 }
 
+.mdi-waveform::before {
+  content: "\F147D";
+}
+
 .mdi-weather-night::before {
   content: "\F0594";
 }

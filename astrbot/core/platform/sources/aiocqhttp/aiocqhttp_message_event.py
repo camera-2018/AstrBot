@@ -1,6 +1,7 @@
 import asyncio
 import re
 from collections.abc import AsyncGenerator
+from typing import Any
 
 from aiocqhttp import CQHttp, Event
 
@@ -85,6 +86,23 @@ class AiocqhttpMessageEvent(AstrMessageEvent):
                 d = await AiocqhttpMessageEvent._from_segment_to_dict(segment)
                 ret.append(d)
         return ret
+
+    async def call_action(self, action: str, **params) -> Any:
+        """Call OneBot action through the aiocqhttp client.
+
+        Args:
+            action: OneBot action name.
+            **params: Action parameters.
+        """
+        return await self.bot.call_action(action=action, **params)
+
+    async def call_napcat_action(self, action: str, **params) -> Any:
+        """Call NapCat extension action name directly.
+
+        This is useful when NapCat provides non-standard OneBot actions,
+        such as voice/AI APIs.
+        """
+        return await self.call_action(action=action, **params)
 
     @classmethod
     async def _dispatch_send(

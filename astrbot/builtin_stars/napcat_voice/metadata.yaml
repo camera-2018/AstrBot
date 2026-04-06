@@ -1,0 +1,7 @@
+name: napcat-voice
+desc: NapCat 语音与群 AI 扩展接口桥接
+author: AstrBot
+version: v1.0.0
+repo: https://astrbot.app
+support_platforms:
+  - aiocqhttp

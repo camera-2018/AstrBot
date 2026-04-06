@@ -25,6 +25,10 @@ class ActiveEventRegistry:
         if not self._events[umo]:
             del self._events[umo]
 
+    def is_active(self, event: AstrMessageEvent) -> bool:
+        """Check whether *event* is currently registered as active."""
+        return event in self._events.get(event.unified_msg_origin, set())
+
     def stop_all(
         self,
         umo: str,

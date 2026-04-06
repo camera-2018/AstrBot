@@ -38,6 +38,8 @@ class ProviderOpenAIWhisperAPI(STTProvider):
         )
 
         self.set_model(provider_config["model"])
+        self.language = provider_config.get("language", "").strip()
+        self.prompt = provider_config.get("prompt", "").strip()
 
     async def _get_audio_format(self, file_path) -> str | None:
         # 定义要检测的头部字节
@@ -116,10 +118,13 @@ class ProviderOpenAIWhisperAPI(STTProvider):
 
                 audio_url = output_path
 
-        result = await self.client.audio.transcriptions.create(
-            model=self.model_name,
-            file=("audio.wav", open(audio_url, "rb")),
-        )
+        with open(audio_url, "rb") as audio_file:
+            result = await self.client.audio.transcriptions.create(
+                model=self.model_name,
+                file=("audio.wav", audio_file),
+                language=self.language or NOT_GIVEN,
+                prompt=self.prompt or NOT_GIVEN,
+            )
 
         # remove temp file
         if output_path and os.path.exists(output_path):

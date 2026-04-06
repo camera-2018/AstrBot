@@ -158,6 +158,11 @@ const MainRoutes = {
       ]
     },
     {
+      name: 'VADMonitor',
+      path: '/vad-monitor',
+      component: () => import('@/views/VADMonitorPage.vue')
+    },
+    {
       name: 'Settings',
       path: '/settings',
       component: () => import('@/views/Settings.vue')

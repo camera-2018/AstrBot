@@ -131,6 +131,11 @@ const sidebarItem: menu[] = [
         icon: 'mdi-timeline-text-outline',
         to: '/trace'
       },
+      {
+        title: 'VAD Monitor',
+        icon: 'mdi-waveform',
+        to: '/vad-monitor'
+      },
     ]
   }
   // {

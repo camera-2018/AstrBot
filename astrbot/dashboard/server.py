@@ -136,6 +136,7 @@ class AstrBotDashboard:
         self.cron_route = CronRoute(self.context, core_lifecycle)
         self.t2i_route = T2iRoute(self.context, core_lifecycle)
         self.kb_route = KnowledgeBaseRoute(self.context, core_lifecycle)
+        self.vad_monitor_route = VADMonitorRoute(self.context)
         self.platform_route = PlatformRoute(self.context, core_lifecycle)
         self.backup_route = BackupRoute(self.context, db, core_lifecycle)
         self.live_chat_route = LiveChatRoute(self.context, db, core_lifecycle)
